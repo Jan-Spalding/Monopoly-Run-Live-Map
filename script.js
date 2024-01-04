@@ -1,4 +1,4 @@
-import { dummy } from "/dummy.js"
+import { dummy } from "dummy.js"
 
 let map
 let player = null
