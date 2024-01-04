@@ -203,7 +203,6 @@ let routeMarker
 let startCash = 1500
 let center = { lat:51.514037770944405, lng: -0.10973930261075555}
 
-
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
   const { AdvancedMarkerElement, PinElement} = await google.maps.importLibrary("marker");
