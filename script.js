@@ -1,4 +1,4 @@
-import { dummy } from "dummy.js"
+import { dummy } from "Monopoly-Run-Live-Map/dummy.js"
 
 let map
 let player = null
