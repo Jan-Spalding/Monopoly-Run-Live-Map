@@ -1,4 +1,4 @@
-import { dummy } from "/Monopoly-Run-Live-Map/dummy.js"
+import { dummy } from "./dummy.js"
 
 let map
 let player = null
@@ -11,6 +11,7 @@ if (window.matchMedia("(max-width: 1000px)").matches) {
 
 let markers = []
 let stationMarkers = []
+let stationLines = []
 let circles = []
 let description = []
 
@@ -25,6 +26,18 @@ let red = true
 let yellow = true
 let green = true
 let darkBlue = true
+let subway = false
+let bakerloo = false 
+let northern = false
+let jubilee = false
+let waterlooCity = false
+let circle = false
+let district = false
+let metropolitan = false
+let hammersmithCity = false
+let central = false
+let victoria = false 
+let piccadilly = false
 
 let locations = [
   [51.50403847337179, -0.11814194610221404, "Jubilee Gardens (Start)"],
@@ -135,53 +148,58 @@ console.log("TOTAL COST OF ALL HOUSES: " + totalCost)
 document.getElementById("costOutput").innerHTML = "Cost: £" + totalCost
 
 let stations = [
-  [51.49891756244119, -0.11210969095378359, "Lambeth North"],
-  [51.494614499475254, -0.10040618899709142, "Elephant & Castle"],
-  [51.501234485965924, -0.09361690446424355, "Borough"],
-  [51.50587782522662, -0.08698307694054815, "London Bridge"],
-  [51.50390475764862, -0.10495163243367903, "Southwark"],
-  [51.503056004617065, -0.11513637218640413, "Waterloo"],
-  [51.49947935421642, -0.13371345743108193, "St. James' Park"],
-  [51.50725164932739, -0.1221971212357279, "Embankment"],
-  [51.50848760034933, -0.12586179765258454, "Charing Cross"],
-  [51.51099726186868, -0.11429875562623341, "Temple"],
-  [51.511455615500665, -0.10312936695203434, "Blackfriars"],
-  [51.51228180657306, -0.09364186994176019, "Mansion House"],
-  [51.51108098522362, -0.09036414697600717, "Cannon Street"],
-  [51.51099680237662, -0.08666107356601188, "Monument"],
-  [51.51338582292458, -0.08892898489325937, "Bank"],
-  [51.51011687863511, -0.07666534460463559, "Tower Hill"],
-  [51.51415611038749, -0.07553500336190247, "Aldgate"],
-  [51.51742373629193, -0.08304094326674213, "Liverpool Street"],
-  [51.51848817346733, -0.08820712096490531, "Moorgate"],
-  [51.52565977595159, -0.08749539726770138, "Old Street"],
-  [51.53277322882353, -0.10587588818133123, "Angel"],
-  [51.520215892639456, -0.09767838008635205, "Barbican"],
-  [51.5201566293988, -0.10474530953788737, "Farringdon"],
-  [51.518203811308354, -0.11149829959128216, "Chancery Lane"],
-  [51.530641331390704, -0.12316975093290748, "King's Cross St. Pancras"],
-  [51.517409324775684, -0.11999870054456749, "Holborn"],
-  [51.51299805921465, -0.12416265080392082, "Covert Garden"],
-  [51.51144410179692, -0.12814523175282908, "Leicester Square"],
-  [51.51011627789041, -0.1341706895448075, "Piccadilly Circus"],
-  [51.501336341705816, -0.12484168830228909, "Westminster"],
-  [51.5069286228542, -0.14288458217440142, "Green Park"],
-  [51.516276349427656, -0.1300415585557886, "Tottenham Court Road"],
-  [51.51520618604039, -0.14185384508537302, "Oxford Circus"],
-  [51.51432830425982, -0.14885459909278098, "Bond Street"],
-  [51.520535756205426, -0.13452867772343655, "Goodge Street"],
-  [51.52562194815571, -0.1350215139117867, "Euston Square"],
-  [51.52461169741828, -0.13816768562939633, "Warren Street"],
-  [51.52373541398983, -0.14391734528704225, "Great Portland Street"],
-  [51.52359036858023, -0.14671760048314883, "Regent's Park"],
-  [51.52314620161692, -0.1568624216276424, "Baker Street"],
-  [51.52242723999441, -0.16283573432090534, "Marylebone"],
-  [51.48825229128083, -0.10561550911285357, "Kennington"],
-  [51.514921744692444, -0.09755764365551342, "St. Paul's"],
-  [51.5153092753968, -0.07182442734533678, "Aldgate East"],
-  [51.51951569869003, -0.05969797775933522, "Whitechapel"],
-  [51.5230732447438, -0.12426547808655439, "Russell Square"]
+  [51.49891756244119, -0.11210969095378359, "Lambeth North", ["bakerloo"]],
+  [51.494614499475254, -0.10040618899709142, "Elephant & Castle", ["bakerloo", "northern"]],
+  [51.501234485965924, -0.09361690446424355, "Borough", ["northern"]],
+  [51.50587782522662, -0.08698307694054815, "London Bridge", ["northern", "jubilee"]],
+  [51.50390475764862, -0.10495163243367903, "Southwark", ["jubilee"]],
+  [51.503056004617065, -0.11513637218640413, "Waterloo", ["bakerloo", "northern", "jubilee", "waterloo & city"]],
+  [51.49947935421642, -0.13371345743108193, "St. James' Park", ["circle", "district"]],
+  [51.50725164932739, -0.1221971212357279, "Embankment", ["bakerloo", "northern", "circle", "district"]],
+  [51.50848760034933, -0.12586179765258454, "Charing Cross", ["bakerloo", "northern"]],
+  [51.51099726186868, -0.11429875562623341, "Temple", ["circle", "district"]],
+  [51.511455615500665, -0.10312936695203434, "Blackfriars", ["circle", "district"]],
+  [51.51228180657306, -0.09364186994176019, "Mansion House", ["circle", "district"]],
+  [51.51108098522362, -0.09036414697600717, "Cannon Street", ["circle", "district"]],
+  [51.51099680237662, -0.08666107356601188, "Monument", ["circle", "district"]],
+  [51.51338582292458, -0.08892898489325937, "Bank", ["northern", "waterloo & city", "central"]],
+  [51.51011687863511, -0.07666534460463559, "Tower Hill", ["circle", "district"]],
+  [51.51415611038749, -0.07553500336190247, "Aldgate", ["circle", "metropolitan"]],
+  [51.51742373629193, -0.08304094326674213, "Liverpool Street", ["circle", "metropolitan", "central", "hammersmith & city"]],
+  [51.51848817346733, -0.08820712096490531, "Moorgate", ["northern", "circle", "metropolitan", "hammersmith & city"]],
+  [51.52565977595159, -0.08749539726770138, "Old Street", ["northern"]],
+  [51.53277322882353, -0.10587588818133123, "Angel", ["northern"]],
+  [51.520215892639456, -0.09767838008635205, "Barbican", ["circle", "metropolitan", "hammersmith & city"]],
+  [51.5201566293988, -0.10474530953788737, "Farringdon", ["circle", "metropolitan", "hammersmith & city"]],
+  [51.518203811308354, -0.11149829959128216, "Chancery Lane", ["central"]],
+  [51.530641331390704, -0.12316975093290748, "King's Cross St. Pancras", ["northern", "circle", "metropolitan", "hammersmith & city", "victoria", "piccadilly"]],
+  [51.517409324775684, -0.11999870054456749, "Holborn", ["central", "piccadilly"]],
+  [51.51299805921465, -0.12416265080392082, "Covert Garden", ["piccadilly"]],
+  [51.51144410179692, -0.12814523175282908, "Leicester Square", ["northern", "piccadilly"]],
+  [51.51011627789041, -0.1341706895448075, "Piccadilly Circus", ["bakerloo", "piccadilly"]],
+  [51.501336341705816, -0.12484168830228909, "Westminster", ["jubilee", "circle", "district"]],
+  [51.5069286228542, -0.14288458217440142, "Green Park", ["jubilee", "victoria", "piccadilly"]],
+  [51.516276349427656, -0.1300415585557886, "Tottenham Court Road", ["northern", "central"]],
+  [51.51520618604039, -0.14185384508537302, "Oxford Circus", ["bakerloo", "central", "victoria"]],
+  [51.51432830425982, -0.14885459909278098, "Bond Street", ["jubilee", "central"]],
+  [51.520535756205426, -0.13452867772343655, "Goodge Street", ["northern"]],
+  [51.52562194815571, -0.1350215139117867, "Euston Square", ["circle", "metropolitan", "hammersmith & city"]],
+  [51.52461169741828, -0.13816768562939633, "Warren Street", ["northern", "victoria"]],
+  [51.52373541398983, -0.14391734528704225, "Great Portland Street", ["circle", "metropolitan", "hammersmith & city"]],
+  [51.52359036858023, -0.14671760048314883, "Regent's Park", ["bakerloo"]],
+  [51.52314620161692, -0.1568624216276424, "Baker Street", ["bakerloo", "jubilee", "circle", "metropolitan", "hammersmith & city"]],
+  [51.52242723999441, -0.16283573432090534, "Marylebone", ["bakerloo"]],
+  [51.48825229128083, -0.10561550911285357, "Kennington", ["northern"]],
+  [51.514921744692444, -0.09755764365551342, "St. Paul's", ["central"]],
+  [51.5153092753968, -0.07182442734533678, "Aldgate East", ["district", "hammersmith & city"]],
+  [51.51951569869003, -0.05969797775933522, "Whitechapel", ["district", "hammersmith & city"]],
+  [51.5230732447438, -0.12426547808655439, "Russell Square", ["piccadilly"]]
 ]
+
+// ADD ALL SUBWAY TAG
+for (let i = 0; i < stations.length; i++) {
+  stations[i][3].push("subway")
+}
 
 let lines = [
   ["bakerloo", ["Elephant & Castle", "Lambeth North", "Waterloo", "Embankment", "Charing Cross", "Piccadilly Circus", "Oxford Circus", "Regent's Park", "Baker Street", "Marylebone"]], // CONFIRMED
@@ -202,6 +220,7 @@ let rush = 0
 let routeMarker
 let startCash = 1500
 let center = { lat:51.514037770944405, lng: -0.10973930261075555}
+
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
@@ -267,69 +286,74 @@ async function initMap() {
     
     stationMarkers.push(new AdvancedMarkerElement({
       position: {lat:(stations[i][0]), lng:(stations[i][1])},
-      map,
+      map: null,
       title: stations[i][2],
       content: element.element
     }))
+    stationMarkers[i].tags = stations[i][3]
   }
 
   // STATION LINE
   for (let i = 0; i < lines.length; i++) {
     for (let j = 1; j < lines[i].length; j++) {
+      stationLines.push()
       let array = []
       for (let k = 0; k < lines[i][j].length; k++) {
         array.push(lineToStation(lines[i][j][k]))
+        stationLines.push()
       }
       console.log(array)
       switch(lines[i][0]) {
         case "bakerloo":
-          stationLine(array, "#964B00")
+          stationLines.push(stationLine(array, "#964B00", ["subway", "bakerloo"]))
           break
         case "northern":
-          stationLine(array)
+          stationLines.push(stationLine(array, "#000000", ["subway", "northern"]))
           break
         case "jubilee":
-          stationLine(array, "#808080")
+          stationLines.push(stationLine(array, "#808080", ["subway", "jubilee"]))
           break
         case "waterloo & city":
-          stationLine(array, "#90EE90")
+          stationLines.push(stationLine(array, "#90EE90", ["subway", "waterloo & city"]))
           break
         case "circle":
-          stationLine(array, "#FFFF00")
+          stationLines.push(stationLine(array, "#FFFF00", ["subway", "circle"]))
           break
         case "district":
-          stationLine(array, "#00FF00")
+          stationLines.push(stationLine(array, "#00FF00", ["subway", "district"]))
           break
         case "metropolitan":
-          stationLine(array, "#FF00FF")
+          stationLines.push(stationLine(array, "#FF00FF", ["subway", "metropolitan"]))
           break
         case "central":
-          stationLine(array, "#FF0000")
+          stationLines.push(stationLine(array, "#FF0000", ["subway", "central"]))
           break
         case "hammersmith & city":
-          stationLine(array, "#FFC0CB")
+          stationLines.push(stationLine(array, "#FFC0CB", ["subway", "hammersmith & city"]))
           break
         case "victoria":
-          stationLine(array, "#ADD8E6")
+          stationLines.push(stationLine(array, "#ADD8E6", ["subway", "victoria"]))
           break
         case "piccadilly":
-          stationLine(array, "#0000FF")
+          stationLines.push(stationLine(array, "#0000FF", ["subway", "piccadilly"]))
           break
       }
     }
   }
 
-  function stationLine(array, color = "#000000") {
+  function stationLine(array, color, tags) {
     if (array.length > 1) {
-      new google.maps.Polyline({
+      return new google.maps.Polyline({
         path: array, //[{lat,lng}, {lat,lng}]
         geodesic: true,
         strokeColor: color,
         strokeOpacity: 1.0,
         strokeWeight: 5,
-        map
+        map,
+        tags: tags,
+        visible: false,
       });
-    }
+    } 
   }
 
   function lineToStation(lineName) {
@@ -582,6 +606,8 @@ document.getElementById("houses").addEventListener("click", function() {
   updateMarkers()
 })
 
+
+
 document.getElementById("brown").addEventListener("click", function() {
   brown ? brown = false : brown = true
   update = "brown"
@@ -638,6 +664,120 @@ document.getElementById("darkBlue").addEventListener("click", function() {
   updateMarkers()
 })
 
+document.getElementById("subway").addEventListener("click", function() {
+  if (subway) {
+    subway = false
+    bakerloo = false 
+    northern = false
+    jubilee = false
+    waterlooCity = false
+    circle = false
+    district = false
+    metropolitan = false
+    hammersmithCity = false
+    central = false
+    victoria = false
+    piccadilly = false
+  } else {
+    subway = true
+    bakerloo = true 
+    northern = true
+    jubilee = true
+    waterlooCity = true
+    circle = true
+    district = true
+    metropolitan = true
+    hammersmithCity = true
+    central = true
+    victoria = true
+    piccadilly = true
+  }
+  updateSubway("subway", subway)
+})
+
+document.getElementById("bakerloo").addEventListener("click", function(){
+  bakerloo ? bakerloo = false : bakerloo = true
+  updateSubway("bakerloo", bakerloo)
+})
+
+document.getElementById("northern").addEventListener("click", function(){
+  northern ? northern = false : northern = true
+  updateSubway("northern", northern)
+})
+
+document.getElementById("jubilee").addEventListener("click", function(){
+  jubilee ? jubilee = false : jubilee = true
+  updateSubway("jubilee", jubilee)
+})
+
+document.getElementById("waterlooCity").addEventListener("click", function(){
+  waterlooCity ? waterlooCity = false : waterlooCity = true
+  updateSubway("waterloo & city", waterlooCity)
+})
+
+document.getElementById("circle").addEventListener("click", function(){
+  circle ? circle = false : circle = true
+  updateSubway("circle", circle)
+})
+
+document.getElementById("district").addEventListener("click", function(){
+  district ? district = false : district = true
+  updateSubway("district", district)
+})
+
+document.getElementById("metropolitan").addEventListener("click", function(){
+  metropolitan ? metropolitan = false : metropolitan = true
+  updateSubway("metropolitan", metropolitan)
+})
+
+document.getElementById("hammersmithCity").addEventListener("click", function(){
+  hammersmithCity ? hammersmithCity = false : hammersmithCity = true
+  updateSubway("hammersmith & city", hammersmithCity)
+})
+
+document.getElementById("central").addEventListener("click", function(){
+  central ? central = false : central = true
+  updateSubway("central", central)
+})
+
+document.getElementById("victoria").addEventListener("click", function(){
+  victoria ? victoria = false : victoria = true
+  updateSubway("victoria", victoria)
+})
+
+document.getElementById("piccadilly").addEventListener("click", function(){
+  piccadilly ? piccadilly = false : piccadilly = true
+  updateSubway("piccadilly", piccadilly)
+})
+
+// UPDATE SUBWAYS 
+function updateSubway(tag, update) {
+  for (let i = 0; i < stationMarkers.length; i++) {
+    for (let j = 0; j < stationMarkers[i].tags.length; j++) {
+      if (stationMarkers[i].tags[j] == tag) {
+        if (update) {
+          stationMarkers[i].map = map
+        } else {
+          stationMarkers[i].map = null
+        }
+      }
+    }
+  }
+
+  for (let k = 0; k < stationLines.length; k++) {
+    for (let n = 0; n < stationLines[k].tags.length; n++) {
+      if (stationLines[k].tags[n] == tag) {
+        if (update) {
+          stationLines[k].setVisible(true)
+        } else {
+          stationLines[k].setVisible(false)
+        }  
+      }
+    }
+  }
+  updateDOM()
+}
+
 // UPDATE POINTERS
 function updateMarkers() {
   for (let i = 0; i < markers.length; i++) {
@@ -667,6 +807,17 @@ function updateDOM() {
   yellow ? document.getElementById("yellow").checked = true : document.getElementById("yellow").checked = false
   green ? document.getElementById("green").checked = true : document.getElementById("green").checked = false
   darkBlue ? document.getElementById("darkBlue").checked = true : document.getElementById("darkBlue").checked = false
+  bakerloo ? document.getElementById("bakerloo").checked = true : document.getElementById("bakerloo").checked = false
+  northern ? document.getElementById("northern").checked = true : document.getElementById("northern").checked = false
+  jubilee ? document.getElementById("jubilee").checked = true : document.getElementById("jubilee").checked = false
+  waterlooCity ? document.getElementById("waterlooCity").checked = true : document.getElementById("waterlooCity").checked = false
+  circle ? document.getElementById("circle").checked = true : document.getElementById("circle").checked = false
+  district ? document.getElementById("district").checked = true : document.getElementById("district").checked = false
+  metropolitan ? document.getElementById("metropolitan").checked = true : document.getElementById("metropolitan").checked = false
+  hammersmithCity ? document.getElementById("hammersmithCity").checked = true : document.getElementById("hammersmithCity").checked = false
+  central ? document.getElementById("central").checked = true : document.getElementById("central").checked = false
+  victoria ? document.getElementById("victoria").checked = true : document.getElementById("victoria").checked = false
+  piccadilly ? document.getElementById("piccadilly").checked = true : document.getElementById("piccadilly").checked = false
 }
 
 // MENU CONTROLS
