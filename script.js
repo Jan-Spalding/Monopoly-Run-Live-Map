@@ -825,13 +825,15 @@ let menu = false
 
 document.getElementById("mobileIcon").addEventListener("click", function() {
   if (menu) {
-    document.getElementById("mobileIcon").innerHTML = "☰"
+    document.getElementById("mobileIcon").children[0].style.display = "block"
+    document.getElementById("mobileIcon").children[1].style.display = "none"
     document.getElementById("settings").style.display = "none"
     document.getElementById("map").style.display = "block"
     document.getElementById("mobileQuick").style.display = "flex"
     menu = false
   } else {
-    document.getElementById("mobileIcon").innerHTML = "X"
+    document.getElementById("mobileIcon").children[1].style.display = "block"
+    document.getElementById("mobileIcon").children[0].style.display = "none"
     document.getElementById("settings").style.display = "flex"
     document.getElementById("map").style.display = "none"
     document.getElementById("mobileQuick").style.display = "none"
