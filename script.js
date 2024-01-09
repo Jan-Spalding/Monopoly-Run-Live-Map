@@ -215,6 +215,11 @@ let lines = [
   ["piccadilly", ["King's Cross St. Pancras", "Russell Square", "Holborn", "Covert Garden", "Leicester Square", "Piccadilly Circus", "Green Park"]] // CONFIRMED
 ]
 
+// TEXT SUBWAY LINES
+document.getElementById("subwayLines").addEventListener("click", function() {
+  alert(lines)
+})
+
 let distance = 0
 let rush = 0
 let routeMarker
