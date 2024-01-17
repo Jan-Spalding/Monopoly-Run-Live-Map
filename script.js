@@ -148,52 +148,52 @@ console.log("TOTAL COST OF ALL HOUSES: " + totalCost)
 document.getElementById("costOutput").innerHTML = "Cost: £" + totalCost
 
 let stations = [
-  [51.49891756244119, -0.11210969095378359, "Lambeth North", ["bakerloo"]],
-  [51.494614499475254, -0.10040618899709142, "Elephant & Castle", ["bakerloo", "northern"]],
-  [51.501234485965924, -0.09361690446424355, "Borough", ["northern"]],
-  [51.50587782522662, -0.08698307694054815, "London Bridge", ["northern", "jubilee"]],
-  [51.50390475764862, -0.10495163243367903, "Southwark", ["jubilee"]],
-  [51.503056004617065, -0.11513637218640413, "Waterloo", ["bakerloo", "northern", "jubilee", "waterloo & city"]],
-  [51.49947935421642, -0.13371345743108193, "St. James' Park", ["circle", "district"]],
-  [51.50725164932739, -0.1221971212357279, "Embankment", ["bakerloo", "northern", "circle", "district"]],
-  [51.50848760034933, -0.12586179765258454, "Charing Cross", ["bakerloo", "northern"]],
-  [51.51099726186868, -0.11429875562623341, "Temple", ["circle", "district"]],
-  [51.511455615500665, -0.10312936695203434, "Blackfriars", ["circle", "district"]],
-  [51.51228180657306, -0.09364186994176019, "Mansion House", ["circle", "district"]],
-  [51.51108098522362, -0.09036414697600717, "Cannon Street", ["circle", "district"]],
-  [51.51099680237662, -0.08666107356601188, "Monument", ["circle", "district"]],
-  [51.51338582292458, -0.08892898489325937, "Bank", ["northern", "waterloo & city", "central"]],
-  [51.51011687863511, -0.07666534460463559, "Tower Hill", ["circle", "district"]],
-  [51.51415611038749, -0.07553500336190247, "Aldgate", ["circle", "metropolitan"]],
-  [51.51742373629193, -0.08304094326674213, "Liverpool Street", ["circle", "metropolitan", "central", "hammersmith & city"]],
-  [51.51848817346733, -0.08820712096490531, "Moorgate", ["northern", "circle", "metropolitan", "hammersmith & city"]],
-  [51.52565977595159, -0.08749539726770138, "Old Street", ["northern"]],
-  [51.53277322882353, -0.10587588818133123, "Angel", ["northern"]],
-  [51.520215892639456, -0.09767838008635205, "Barbican", ["circle", "metropolitan", "hammersmith & city"]],
-  [51.5201566293988, -0.10474530953788737, "Farringdon", ["circle", "metropolitan", "hammersmith & city"]],
-  [51.518203811308354, -0.11149829959128216, "Chancery Lane", ["central"]],
-  [51.530641331390704, -0.12316975093290748, "King's Cross St. Pancras", ["northern", "circle", "metropolitan", "hammersmith & city", "victoria", "piccadilly"]],
-  [51.517409324775684, -0.11999870054456749, "Holborn", ["central", "piccadilly"]],
-  [51.51299805921465, -0.12416265080392082, "Covert Garden", ["piccadilly"]],
-  [51.51144410179692, -0.12814523175282908, "Leicester Square", ["northern", "piccadilly"]],
-  [51.51011627789041, -0.1341706895448075, "Piccadilly Circus", ["bakerloo", "piccadilly"]],
-  [51.501336341705816, -0.12484168830228909, "Westminster", ["jubilee", "circle", "district"]],
-  [51.5069286228542, -0.14288458217440142, "Green Park", ["jubilee", "victoria", "piccadilly"]],
-  [51.516276349427656, -0.1300415585557886, "Tottenham Court Road", ["northern", "central"]],
-  [51.51520618604039, -0.14185384508537302, "Oxford Circus", ["bakerloo", "central", "victoria"]],
-  [51.51432830425982, -0.14885459909278098, "Bond Street", ["jubilee", "central"]],
-  [51.520535756205426, -0.13452867772343655, "Goodge Street", ["northern"]],
-  [51.52562194815571, -0.1350215139117867, "Euston Square", ["circle", "metropolitan", "hammersmith & city"]],
-  [51.52461169741828, -0.13816768562939633, "Warren Street", ["northern", "victoria"]],
-  [51.52373541398983, -0.14391734528704225, "Great Portland Street", ["circle", "metropolitan", "hammersmith & city"]],
-  [51.52359036858023, -0.14671760048314883, "Regent's Park", ["bakerloo"]],
-  [51.52314620161692, -0.1568624216276424, "Baker Street", ["bakerloo", "jubilee", "circle", "metropolitan", "hammersmith & city"]],
-  [51.52242723999441, -0.16283573432090534, "Marylebone", ["bakerloo"]],
-  [51.48825229128083, -0.10561550911285357, "Kennington", ["northern"]],
-  [51.514921744692444, -0.09755764365551342, "St. Paul's", ["central"]],
-  [51.5153092753968, -0.07182442734533678, "Aldgate East", ["district", "hammersmith & city"]],
-  [51.51951569869003, -0.05969797775933522, "Whitechapel", ["district", "hammersmith & city"]],
-  [51.5230732447438, -0.12426547808655439, "Russell Square", ["piccadilly"]]
+  [51.49891756244119, -0.11210969095378359, "Lambeth North", ["bakerloo"], null],
+  [51.494614499475254, -0.10040618899709142, "Elephant & Castle", ["bakerloo", "northern"], null],
+  [51.501234485965924, -0.09361690446424355, "Borough", ["northern"], null],
+  [51.50587782522662, -0.08698307694054815, "London Bridge", ["northern", "jubilee"], null],
+  [51.50390475764862, -0.10495163243367903, "Southwark", ["jubilee"], null],
+  [51.503056004617065, -0.11513637218640413, "Waterloo", ["bakerloo", "northern", "jubilee", "waterloo & city"], null],
+  [51.49947935421642, -0.13371345743108193, "St. James' Park", ["circle", "district"], null],
+  [51.50725164932739, -0.1221971212357279, "Embankment", ["bakerloo", "northern", "circle", "district"], null],
+  [51.50848760034933, -0.12586179765258454, "Charing Cross", ["bakerloo", "northern"], null],
+  [51.51099726186868, -0.11429875562623341, "Temple", ["circle", "district"], null],
+  [51.511455615500665, -0.10312936695203434, "Blackfriars", ["circle", "district"], null],
+  [51.51228180657306, -0.09364186994176019, "Mansion House", ["circle", "district"], null],
+  [51.51108098522362, -0.09036414697600717, "Cannon Street", ["circle", "district"], null],
+  [51.51099680237662, -0.08666107356601188, "Monument", ["circle", "district"], null],
+  [51.51338582292458, -0.08892898489325937, "Bank", ["northern", "waterloo & city", "central"], null],
+  [51.51011687863511, -0.07666534460463559, "Tower Hill", ["circle", "district"], null],
+  [51.51415611038749, -0.07553500336190247, "Aldgate", ["circle", "metropolitan"], null],
+  [51.51742373629193, -0.08304094326674213, "Liverpool Street", ["circle", "metropolitan", "central", "hammersmith & city"], null],
+  [51.51848817346733, -0.08820712096490531, "Moorgate", ["northern", "circle", "metropolitan", "hammersmith & city"], null],
+  [51.52565977595159, -0.08749539726770138, "Old Street", ["northern"], null],
+  [51.53277322882353, -0.10587588818133123, "Angel", ["northern"], null],
+  [51.520215892639456, -0.09767838008635205, "Barbican", ["circle", "metropolitan", "hammersmith & city"], null],
+  [51.5201566293988, -0.10474530953788737, "Farringdon", ["circle", "metropolitan", "hammersmith & city"], null],
+  [51.518203811308354, -0.11149829959128216, "Chancery Lane", ["central"], null],
+  [51.530641331390704, -0.12316975093290748, "King's Cross St. Pancras", ["northern", "circle", "metropolitan", "hammersmith & city", "victoria", "piccadilly"], null],
+  [51.517409324775684, -0.11999870054456749, "Holborn", ["central", "piccadilly"], null],
+  [51.51299805921465, -0.12416265080392082, "Covert Garden", ["piccadilly"], null],
+  [51.51144410179692, -0.12814523175282908, "Leicester Square", ["northern", "piccadilly"], null],
+  [51.51011627789041, -0.1341706895448075, "Piccadilly Circus", ["bakerloo", "piccadilly"], null],
+  [51.501336341705816, -0.12484168830228909, "Westminster", ["jubilee", "circle", "district"], null],
+  [51.5069286228542, -0.14288458217440142, "Green Park", ["jubilee", "victoria", "piccadilly"], null],
+  [51.516276349427656, -0.1300415585557886, "Tottenham Court Road", ["northern", "central"], null],
+  [51.51520618604039, -0.14185384508537302, "Oxford Circus", ["bakerloo", "central", "victoria"], null],
+  [51.51432830425982, -0.14885459909278098, "Bond Street", ["jubilee", "central"], null],
+  [51.520535756205426, -0.13452867772343655, "Goodge Street", ["northern"], null],
+  [51.52562194815571, -0.1350215139117867, "Euston Square", ["circle", "metropolitan", "hammersmith & city"], null],
+  [51.52461169741828, -0.13816768562939633, "Warren Street", ["northern", "victoria"], null],
+  [51.52373541398983, -0.14391734528704225, "Great Portland Street", ["circle", "metropolitan", "hammersmith & city"], null],
+  [51.52359036858023, -0.14671760048314883, "Regent's Park", ["bakerloo"], null],
+  [51.52314620161692, -0.1568624216276424, "Baker Street", ["bakerloo", "jubilee", "circle", "metropolitan", "hammersmith & city"], null],
+  [51.52242723999441, -0.16283573432090534, "Marylebone", ["bakerloo"], null],
+  [51.48825229128083, -0.10561550911285357, "Kennington", ["northern"], null],
+  [51.514921744692444, -0.09755764365551342, "St. Paul's", ["central"], null],
+  [51.5153092753968, -0.07182442734533678, "Aldgate East", ["district", "hammersmith & city"], null],
+  [51.51951569869003, -0.05969797775933522, "Whitechapel", ["district", "hammersmith & city"], null],
+  [51.5230732447438, -0.12426547808655439, "Russell Square", ["piccadilly"], null]
 ]
 
 // ADD ALL SUBWAY TAG
@@ -216,9 +216,31 @@ let lines = [
 ]
 
 // TEXT SUBWAY LINES
-document.getElementById("subwayLines").addEventListener("click", function() {
-  alert(lines)
-})
+let closest = []
+updateSubwayDOM()
+function updateSubwayDOM() {
+  for (let i = 0; i < lines.length; i++) {
+    let div = document.createElement("div")
+
+    div.className = "column"
+
+    let title = document.createElement("p")
+    let line = document.createElement("p")
+
+    title.innerHTML = lines[i][0]
+
+    let string = ""
+    for (let j = 0; j < lines[i][1].length; j++) {
+      string += lines[i][1][j] + " -- " 
+    }
+
+    line.innerHTML = string
+
+    div.appendChild(title)
+    div.appendChild(line)
+    document.getElementById("subwayOutput").appendChild(div)
+  }
+}
 
 let distance = 0
 let rush = 0
@@ -1000,6 +1022,14 @@ let timer = setInterval(function() {
             }
           }
           // console.log(visited)
+
+          // DISTANCE TO STATIONS
+          for (let i = 0; i < stations.length; i++) {
+            const x = stations[i][1] - pos.lng
+            const y = stations[i][0] - pos.lat
+            stations[i][4] = Math.sqrt(x**2 + y**2)
+          }
+          closestStations()
         }
       }
     )
@@ -1007,6 +1037,61 @@ let timer = setInterval(function() {
     clearInterval(timer)
   }
 }, 250)
+
+// CALCULATE CLOSEST STATION PER LINE
+function closestStations() {
+  closest = []
+  for (let i = 0; i < lines.length; i++) {
+    let array = []
+    for (let j = 0; j < stations.length; j++) {
+      for (let k = 0; k < stations[j][3].length; k++) {
+        if (lines[i][0] == stations[j][3][k]) {
+          array.push([lines[i][0], stations[j][2], stations[j][4]])
+          break
+        }
+      }
+    }
+    closest.push(mergeSort(array)[0])
+  }
+}
+
+// SORT FUNCTION
+function mergeSort(array) {
+  if (array.length <= 1) {
+    return array
+  }
+
+  let middle = Math.floor(array.length / 2)
+  let left = array.slice(middle)
+  let right = array.slice(0, middle)
+  return merge(mergeSort(left), mergeSort(right))
+}
+
+function merge(left, right) {
+  let newArray = []
+  while (right.length && left.length) {
+    if (left[0][2] > right[0][2]) {
+      newArray.push(right[0]) 
+      right.shift()
+    } else {
+      newArray.push(left[0])
+      left.shift()
+    }
+  }
+
+  //Add remainders
+  if (left.length) {
+    for (let i = 0; i < left.length; i++) {
+      newArray.push(left[i])
+    } 
+  } else {
+    for (let i = 0; i < right.length; i++) {
+      newArray.push(right[i])
+    }
+  }
+
+  return newArray
+}
 
 // CALCULATE TOTAL COST (BUYING)
 function totalBuyingCost() {
@@ -1237,7 +1322,6 @@ reader.addEventListener('loadend', () => {
 
 // REMOVE POPUP
 let x = setInterval(function() {
-  console.log(map)
   if (document.getElementById("map").children.length > 1) {
     document.getElementById("map").children[1].remove()
     clearInterval(x)
