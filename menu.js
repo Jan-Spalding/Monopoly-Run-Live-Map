@@ -10,6 +10,10 @@ document.getElementById("toRoute").addEventListener("click", function() {
   document.getElementById("routeHolder").style.display = "flex"
 })
 
+document.getElementById("subwayLines").addEventListener("click", function() {
+  document.getElementById("subwayHolder").style.display = "flex"
+})
+
 // Set the date we're counting down to
 let today = new Date()
 var countDownDate = new Date("December 25, 2024 17:00:00").getTime();
