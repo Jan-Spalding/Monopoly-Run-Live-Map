@@ -229,6 +229,15 @@ input {
   color:white;
 }
 
+.linespan {
+  color:white;
+  cursor:pointer;
+}
+
+.linespan:hover {
+  border-bottom: 2px solid white;
+}
+
 
 @media all and (max-width:1000px) {
   #settings {
@@ -311,3 +320,5 @@ input {
     width:100%;
   }
 }
+
+
