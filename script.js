@@ -217,28 +217,91 @@ let lines = [
 
 // TEXT SUBWAY LINES
 let closest = []
-updateSubwayDOM()
+let spans = []
+
+document.getElementById("subwayLines").addEventListener("click", function() {
+  document.getElementById("subwayHolder").style.display = "flex"
+  updateSubwayDOM()
+})
+
+//updateSubwayDOM()
 function updateSubwayDOM() {
+  console.log(closest)
+  let element = document.getElementById("subwayOutput")
+  if (element.children.length) {
+    let length = element.children.length-1
+    for (let i = length; i >= 0; i--) {
+      document.getElementById("subwayOutput").children[i].remove()
+    }
+  }
+  
   for (let i = 0; i < lines.length; i++) {
     let div = document.createElement("div")
 
     div.className = "column"
 
     let title = document.createElement("p")
-    let line = document.createElement("p")
-
-    title.innerHTML = lines[i][0]
-
-    let string = ""
-    for (let j = 0; j < lines[i][1].length; j++) {
-      string += lines[i][1][j] + " -- " 
-    }
-
-    line.innerHTML = string
-
+    
+    title.innerHTML = lines[i][0].toUpperCase()
+    
     div.appendChild(title)
-    div.appendChild(line)
+
+    
+
+    for (let n = 1; n < lines[i].length; n++) {
+      let string = ""
+      let line = document.createElement("p")
+      console.log(n)
+      for (let j = 0; j < lines[i][n].length; j++) {
+        let span = document.createElement("span")
+
+
+        span.className = "linespan"
+
+        span.innerHTML = lines[i][n][j]
+        for (let k = 0; k < closest.length; k++) {
+          if (span.innerText == closest[k][1] && lines[i][0] == closest[k][0]) {
+            span.style.color = "yellow"
+            break
+          } 
+        }
+        if (j == lines[i][n].length-1) {
+          string += span.outerHTML
+        } else {
+          string += span.outerHTML + " < -- > " 
+        }
+      }
+      line.innerHTML = string
+      div.appendChild(line)
+    }
+    
     document.getElementById("subwayOutput").appendChild(div)
+  }
+  spanListeners()
+}
+
+function spanListeners() {
+  let spans = document.getElementsByClassName("linespan")
+  for (let i = 0; i < spans.length; i++) {
+    spans[i].addEventListener("click", function(event) {
+      let name = new DOMParser().parseFromString(event.target.innerHTML, "text/html").documentElement.textContent
+      for (let i = 0; i < stations.length; i++) {
+        if (name == stations[i][2]) {
+          map.setCenter({lat: stations[i][0], lng: stations[i][1]})
+          map.setZoom(16)
+          document.getElementById("subwayHolder").style.display = "none"
+          if (menu) {
+              document.getElementById("mobileIcon").children[0].style.display = "block"
+              document.getElementById("mobileIcon").children[1].style.display = "none"
+              document.getElementById("settings").style.display = "none"
+              document.getElementById("map").style.display = "block"
+              document.getElementById("mobileQuick").style.display = "flex"
+            menu = false
+          }
+          break
+        } 
+      }
+    })
   }
 }
 
@@ -247,6 +310,7 @@ let rush = 0
 let routeMarker
 let startCash = 1500
 let center = { lat:51.514037770944405, lng: -0.10973930261075555}
+
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary("maps");
@@ -1052,6 +1116,8 @@ function closestStations() {
     }
     closest.push(mergeSort(array)[0])
   }
+  //updateSubwayDOM()
+  //console.log(closest)
 }
 
 // SORT FUNCTION
