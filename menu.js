@@ -10,8 +10,8 @@ document.getElementById("toRoute").addEventListener("click", function() {
   document.getElementById("routeHolder").style.display = "flex"
 })
 
-document.getElementById("subwayLines").addEventListener("click", function() {
-  document.getElementById("subwayHolder").style.display = "flex"
+document.getElementById("subwayBack").addEventListener("click", function() {
+  document.getElementById("subwayHolder").style.display = "none"
 })
 
 // Set the date we're counting down to
