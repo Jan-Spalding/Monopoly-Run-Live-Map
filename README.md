@@ -17,3 +17,5 @@ A filtration system to look at points of a specific colour row or station. Allow
 
 ### Usage
 Visit the deployment page or follow this https://jan-spalding.github.io/Monopoly-Run-Live-Map/ to view the project
+
+A prompt will display asking if the website is allowed to use your current location services to display the icon on the map
