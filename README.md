@@ -1,6 +1,6 @@
 # Monopoly-live Map
 
-![thumbnail](./Monopoly Thumbnail.png)
+[./Monopoly Thumbnail.png]
 
 ### Description
 Based on a real life event where we play monopoly with the locations within London. Given a small book with all the locations and rules of the game I combined all those rules into a website used in the event
@@ -16,4 +16,4 @@ Allows for an import of a predetermined path with a JSON file. A separate progra
 A filtration system to look at points of a specific colour row or station. Allows to see the train lines as a toggle to better plan 
 
 ### Usage
-Visit the deployment page or follow this [link][https://jan-spalding.github.io/Monopoly-Run-Live-Map/] to view the project
+Visit the deployment page or follow this [https://jan-spalding.github.io/Monopoly-Run-Live-Map/] to view the project
