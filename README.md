@@ -15,6 +15,8 @@ A separate project looked to solve this route by using a Travelling Salesman Alg
 
 Each route made in the route planner can be saved and then loaded into. This allows for sharing of potential routes. Loading the savedRoute(21.9).json into the website will load the route found by the Travelling Salesman Aglorithm.
 
+Each point can be clicked on to show more information like rent and buying costs. A small window at the bottom of the page keeps track of all the potential winnings and losses. As well as keeping track of how many points you have visited.
+
 ### Usage
 Visit the deployment page or follow this https://jan-spalding.github.io/Monopoly-Run-Live-Map/ to view the project
 
